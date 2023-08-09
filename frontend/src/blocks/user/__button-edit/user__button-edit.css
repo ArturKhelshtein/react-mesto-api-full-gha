@@ -1,0 +1,29 @@
+.user__button-edit {
+	margin-bottom: 8px;
+	padding: 4px;
+	border: solid 1px #fff;
+	box-sizing: border-box;
+	width: 18px;
+	height: 18px;
+	background: url(../../../images/Button-Edit-User.svg);
+	background-size: cover;
+	background-origin: content-box;
+	background-repeat: no-repeat;
+	opacity: 1;
+	grid-area: btn-edit;
+	flex-shrink: 0;
+}
+
+@media (min-width: 700px) {
+	.user__button-edit {
+		margin-bottom: 11px;
+		padding: 6px;
+		width: 24px;
+		height: 24px;
+	}
+}
+
+.user__button-edit:hover {
+	opacity: 0.6;
+	cursor: pointer;
+}

@@ -1,0 +1,22 @@
+.sign__input {
+	margin-bottom: 30px;
+	padding-bottom: 8px;
+	box-sizing: border-box;
+	width: 100%;
+	border: none;
+	border-bottom: 1px solid #CCCCCC;
+	background-color: #000;
+	color: #fff;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 17px;
+}
+
+.sign__input:last-child {
+	margin-bottom: 0;
+}
+
+.sign__input:focus {
+	outline-color: #7fa5f4; 
+	cursor: text;
+}

@@ -1,0 +1,14 @@
+.card__container {
+	position: relative;
+	margin: 0;
+	max-width: 100%;
+	border-radius: 10px;
+	overflow: hidden;
+	display: grid;
+	grid-template-columns: 1fr 43px;
+	grid-template-rows: 1fr 79px;
+	grid-template-areas:
+		"foto foto"
+		"name like";
+	background-color: #fff;
+}
