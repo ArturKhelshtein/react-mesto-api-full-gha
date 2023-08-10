@@ -7,7 +7,7 @@ function Header({ userEmail }) {
 	const navigate = useNavigate();
 
 	function signOut() {
-		localStorage.removeItem('token');
+		// localStorage.removeItem('token');
 		navigate('/signin');
 		setIsWrapped(false);
 	}

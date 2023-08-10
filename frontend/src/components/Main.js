@@ -9,7 +9,7 @@ function Main({
 	onCardClick,
 	onCardLike,
 	onCardDelete,
-	cards
+	cards,
 }) {
 
 	const currentUser = React.useContext(CurrentUserContext);

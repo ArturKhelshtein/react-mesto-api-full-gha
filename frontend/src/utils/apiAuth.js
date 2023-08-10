@@ -19,6 +19,7 @@ class ApiAuth {
 	register({ email, password }) {
 		return this._request(`/signup`, {
 			method: 'POST',
+			credentials: 'include',
 			headers: this._headers,
 			body: JSON.stringify({
 				password,
@@ -30,6 +31,7 @@ class ApiAuth {
 	 authorize({ email, password }) {
 		return this._request(`/signin`, {
 			method: 'POST',
+			credentials: 'include',
 			headers: this._headers,
 			body: JSON.stringify({
 				password,
@@ -38,22 +40,25 @@ class ApiAuth {
 		});
 	}
 
-	getContent(token) {
+	// getContent(token) {
+	getContent() {
 		return this._request(`/users/me`, {
 			headers: {
 				Accept: 'application/json',
 				'Content-Type': 'application/json',
-				Authorization: `Bearer ${token}`,
+				// Authorization: `Bearer ${token}`,
 			},
+			credentials: 'include',
 		});
 	}
 }
 
 const apiAuth = new ApiAuth({
-	baseUrl: 'https://auth.nomoreparties.co',
+	// baseUrl: 'https://auth.nomoreparties.co',
+	baseUrl: 'http://localhost:4000',
 	headers: {
 		'Content-Type': 'application/json',
-	},
+	}, 
 });
 
 export default apiAuth;

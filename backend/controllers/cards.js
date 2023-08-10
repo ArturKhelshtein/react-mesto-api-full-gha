@@ -6,7 +6,7 @@ const ErrorNotFound = require('../errors/error-not-found');
 const ErrorForbidden = require('../errors/error-forbidden');
 
 function getCards(_req, res, next) {
-  Card.find({})
+  Card.find({}).populate(['owner', 'likes'])
     .then((cards) => res.status(OK).send({ data: cards }))
     .catch(() => next(new ErrorInternalServer('Ошибка на сервере, при запросе карточек')));
 }

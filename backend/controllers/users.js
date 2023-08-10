@@ -108,7 +108,11 @@ async function login(req, res, next) {
     const user = await User.findUserByCredentials(email, password);
     const payload = { _id: user._id };
     const token = generateToken(payload);
-    res.cookie('jwt', token);
+    res.cookie('jwt', token, {
+      maxAge: 604800,
+      httpOnly: true,
+      sameSite: true,
+    });
     return res.status(OK).send({ message: 'Авторицазия успешна', user: payload });
   } catch (error) {
     return next(new ErrorUnauthorized('Пользователь не найден'));

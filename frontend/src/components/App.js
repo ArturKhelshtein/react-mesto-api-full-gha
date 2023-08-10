@@ -42,9 +42,9 @@ function App() {
 		api
 			.getAppInfo()
 			.then((result) => {
-				const [currentUserData, cardData] = result;
-				setCurrentUser(currentUserData);
-				setCards(cardData);
+				const [currentUser, card] = result;
+				setCurrentUser(currentUser.data);
+				setCards(card.data);
 			})
 			.catch((error) =>
 				console.error(
@@ -74,7 +74,7 @@ function App() {
 		setSelectedCard(card);
 	}
 	function handleCardLike(card) {
-		const isLiked = card.likes.some((like) => like._id === currentUser._id);
+		const isLiked = card.likes.some((like) => like._id === currentUser.data._id);
 
 		api
 			.changeLikeCardStatus(card._id, !isLiked)
@@ -104,11 +104,11 @@ function App() {
 			.catch(console.error)
 			.finally(() => setIsLoading(false));
 	}
-	function handleUpdateUser(name, about) {
+	function handleUpdateUser(data) {
 		function makeRequest() {
 			return api
-				.updateUserInfo(name, about)
-				.then((data) => setCurrentUser(data));
+				.updateUserInfo({ name:data.name, about:data.about })
+				.then((updateUser) => setCurrentUser(updateUser.data));
 		}
 		handleSubmit(makeRequest);
 	}
@@ -116,15 +116,16 @@ function App() {
 		function makeRequest() {
 			return api
 				.updateUserAvatar(avatar.link)
-				.then((avatar) => setCurrentUser(avatar));
+				.then((updateUser) => setCurrentUser(updateUser.data));
 		}
 		handleSubmit(makeRequest);
 	}
-	function handleAddPlace({ name, link }) {
+	function handleCreateCard({ name, link }) {
 		function makeRequest() {
 			return api
 				.addCard({ name, link })
-				.then((newCard) => setCards([newCard, ...cards]));
+				.then((newCard) => {
+					return setCards([newCard, ...cards])});
 		}
 		handleSubmit(makeRequest);
 	}
@@ -147,8 +148,7 @@ function App() {
 		apiAuth
 			.authorize({ email, password })
 			.then((data) => {
-				localStorage.setItem('token', data.token);
-				apiAuth.getContent(data.token).then((data) => setUserData(data));
+				apiAuth.getContent(data.user).then((data) => setUserData(data));
 				navigate('/', { replace: true });
 			})
 			.catch((error) => {
@@ -159,9 +159,8 @@ function App() {
 	}
 
 	const checkToken = () => {
-		const token = localStorage.getItem('token');
 		apiAuth
-			.getContent(token)
+			.getContent()
 			.then((data) => {
 				if (!data) {
 					return;
@@ -244,7 +243,7 @@ function App() {
 						<AddPlacePopup
 							isOpen={isAddPlacePopupOpen}
 							onClose={closeAllPopups}
-							onSubmit={handleAddPlace}
+							onSubmit={handleCreateCard}
 							isLoading={isLoading}
 						/>
 

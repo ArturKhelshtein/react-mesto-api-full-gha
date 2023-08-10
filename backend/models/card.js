@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const User = require('./user');
 
 const cardSchema = new mongoose.Schema({
   name: {
@@ -19,14 +20,16 @@ const cardSchema = new mongoose.Schema({
   owner: {
     type: mongoose.ObjectId,
     required: true,
+    ref: User,
   },
   likes: [{
     type: mongoose.ObjectId,
+    ref: User,
   }],
   createdAt: {
     type: Date,
     default: Date.now,
   },
-});
+}, { versionKey: false });
 
 module.exports = mongoose.model('card', cardSchema);
