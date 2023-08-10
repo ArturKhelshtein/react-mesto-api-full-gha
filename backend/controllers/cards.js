@@ -15,7 +15,7 @@ function createCard(req, res, next) {
   const { name, link } = req.body;
   const userId = req.user._id;
 
-  Card.create({ name, link, owner: userId }).then(result => result.populate(['owner', 'likes']))
+  Card.create({ name, link, owner: userId }).then((result) => result.populate(['owner', 'likes']))
     .then((card) => res.status(CREATED).send({ data: card }))
     .catch((error) => {
       if (error.name === 'ValidationError') {
@@ -61,6 +61,7 @@ function putLike(req, res, next) {
     { $addToSet: { likes: userId } },
     { new: true },
   )
+    .populate(['owner', 'likes'])
     .orFail(new ErrorNotFound('Карточка с таким id не найден'))
     .then((likes) => res.send({ message: 'Лайк добавлен ♡', data: likes }))
     .catch((error) => {
@@ -78,6 +79,7 @@ function deleteLike(req, res, next) {
     { $pull: { likes: userId } },
     { new: true },
   )
+    .populate(['owner', 'likes'])
     .orFail(new ErrorNotFound('Карточка с таким id не найдена'))
     .then((likes) => res.send({ message: 'Лайк удален ಠ_ಠ', data: likes }))
     .catch((error) => {

@@ -76,12 +76,8 @@ function App() {
 	function handleCardLike(card) {
 		const isLiked = card.likes.some((like) => like._id === currentUser._id);
 		api
-			.changeLikeCardStatus(card._id, !isLiked)
-			.then((newCard) => {
-				setCards((state) =>
-					state.map((c) => (c._id === card._id ? newCard : c))
-				);
-			})
+			.changeLikeCardStatus(card._id, isLiked)
+			.then((newCard) => setCards((state) => state.map((everyCard) => everyCard._id === card._id ? newCard.data : everyCard)))
 			.catch((error) =>
 				console.error(`Ошибка при установки/снятии лайка: ${error}`)
 			);
@@ -124,8 +120,6 @@ function App() {
 			return api
 				.addCard({ name, link })
 				.then((newCard) => {
-					console.log(newCard.data)
-					console.log(...cards)
 					return setCards([newCard.data, ...cards])
 				});
 		}
