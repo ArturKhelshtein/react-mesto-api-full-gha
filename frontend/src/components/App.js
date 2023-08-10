@@ -74,8 +74,7 @@ function App() {
 		setSelectedCard(card);
 	}
 	function handleCardLike(card) {
-		const isLiked = card.likes.some((like) => like._id === currentUser.data._id);
-
+		const isLiked = card.likes.some((like) => like._id === currentUser._id);
 		api
 			.changeLikeCardStatus(card._id, !isLiked)
 			.then((newCard) => {
@@ -125,7 +124,10 @@ function App() {
 			return api
 				.addCard({ name, link })
 				.then((newCard) => {
-					return setCards([newCard, ...cards])});
+					console.log(newCard.data)
+					console.log(...cards)
+					return setCards([newCard.data, ...cards])
+				});
 		}
 		handleSubmit(makeRequest);
 	}

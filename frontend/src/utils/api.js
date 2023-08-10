@@ -10,10 +10,9 @@ class Api {
 			: Promise.reject(`Ошибка: ${result.status}`);
 	}
 
-	_request(endpoint, options) {
-		return fetch(`${this._baseUrl}${endpoint}`, options).then(
-			this._checkResponse
-		);
+	async _request(endpoint, options) {
+		const result = await fetch(`${this._baseUrl}${endpoint}`, options);
+		return this._checkResponse(result);
 	}
 
 	getUserInfo() {
