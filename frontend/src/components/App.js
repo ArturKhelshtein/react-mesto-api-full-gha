@@ -18,8 +18,6 @@ import Login from './Login';
 
 function App() {
   /*состояние регистрации*/
-  const [isLoggedIn, setLoggedIn] = React.useState(null);
-  const [userData, setUserData] = React.useState(null);
   const [isSucessedRegistration, setIsSucessedRegistration] =
     React.useState(false);
 
@@ -30,9 +28,10 @@ function App() {
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
   const [isTooltipOpen, setIsTooltipOpen] = React.useState(false);
 
-  const [isSelectedCard, setSelectedCard] = React.useState({});
+  const [isLoggedIn, setLoggedIn] = React.useState(null);
   const [currentUser, setCurrentUser] = React.useState({});
   const [cards, setCards] = React.useState([]);
+  const [isSelectedCard, setSelectedCard] = React.useState({});
   const [isLoading, setIsLoading] = React.useState(false);
 
   const navigate = useNavigate();
@@ -74,12 +73,12 @@ function App() {
     setSelectedCard(card);
   }
   function isLikedCard(card) {
-    return card.likes.some((like) => like._id === currentUser._id)
+    return card.likes.some((like) => like._id === currentUser._id);
   }
 
   function handleCardLike(card) {
     api
-      .changeLikeCardStatus({ id:card._id, isLiked:isLikedCard(card) })
+      .changeLikeCardStatus({ id: card._id, isLiked: isLikedCard(card) })
       .then((newCard) =>
         setCards((state) =>
           state.map((everyCard) =>
@@ -146,18 +145,29 @@ function App() {
       .finally(() => setIsTooltipOpen(true));
   }
   function handleLoginSubmit({ email, password }) {
-    setLoggedIn(true);
-
     apiAuth
       .authorize({ email, password })
       .then((data) => {
-        apiAuth.getContent(data.user).then((data) => setUserData(data));
+        apiAuth.getContent(data.user).then((data) => setCurrentUser(data));
         navigate('/', { replace: true });
+        setLoggedIn(true);
       })
       .catch((error) => {
         setIsTooltipOpen(true);
         setIsSucessedRegistration(false);
         console.error(`Ошибка при входе пользователя: ${error}`);
+      });
+  }
+  function handleLogoutSubmit() {
+    apiAuth
+      .logout()
+      .then(() => {
+        navigate('/signin', { replace: true });
+        setLoggedIn(false);
+      })
+      .catch((error) => {
+        setIsTooltipOpen(true);
+        console.error(`Ошибка при выходе пользователя: ${error}`);
       });
   }
 
@@ -168,13 +178,13 @@ function App() {
         if (!data) {
           return;
         }
-        setUserData(data);
+        setCurrentUser(data);
         setLoggedIn(true);
         navigate('/');
       })
       .catch((error) => {
         setLoggedIn(false);
-        setUserData(null);
+        setCurrentUser({});
         console.error(`Ошибка при проверке токена пользователя: ${error}`);
       });
   };
@@ -189,7 +199,10 @@ function App() {
       <CurrentUserContext.Provider value={currentUser}>
         <div className="root">
           <div className="page">
-            <Header userEmail={userData?.data.email} isLoggedIn={isLoggedIn} />
+            <Header
+              userEmail={currentUser?.email}
+              handleLogoutSubmit={handleLogoutSubmit}
+            />
             <InfoTooltip />
             <Routes>
               <Route

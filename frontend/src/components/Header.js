@@ -2,14 +2,14 @@ import React from 'react';
 import { Link, useNavigate, Routes, Route } from 'react-router-dom';
 import logo from '../images/logo/logo__Mesto_white.svg';
 
-function Header({ userEmail }) {
+function Header({ userEmail, handleLogoutSubmit }) {
   const [isWrapped, setIsWrapped] = React.useState(false);
   const navigate = useNavigate();
 
   function signOut() {
-    // localStorage.removeItem('token');
     navigate('/signin');
     setIsWrapped(false);
+    handleLogoutSubmit()
   }
 
   function handleWrappedBurger() {
@@ -98,11 +98,3 @@ function Header({ userEmail }) {
 }
 
 export default Header;
-
-/*вариант через const location = useLocation()*/
-// <div className='navbar'>
-// 	{location.pathname === "/" && <p className='navbar__user-email'>{userEmail}</p>}
-// 	{location.pathname === "/" && <button className='navbar__button navbar__button_shadow' onClick={signOut}>Выйти</button> }
-// 	{location.pathname === "/signup" && <Link to="/signin" className='navbar__button'>Войти</Link> }
-// 	{location.pathname === "/signin" && <Link to="/signup" className='navbar__button'>Регистрация</Link> }
-// </div>

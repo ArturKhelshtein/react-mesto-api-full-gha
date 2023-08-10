@@ -40,13 +40,19 @@ class ApiAuth {
     });
   }
 
-  // getContent(token) {
+  logout() {
+    return this._request(`/signout`, {
+      method: 'GET',
+      credentials: 'include',
+      headers: this._headers,
+    })
+  }
+
   getContent() {
     return this._request(`/users/me`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        // Authorization: `Bearer ${token}`,
       },
       credentials: 'include',
     });
@@ -54,7 +60,6 @@ class ApiAuth {
 }
 
 const apiAuth = new ApiAuth({
-  // baseUrl: 'https://auth.nomoreparties.co',
   baseUrl: 'http://localhost:4000',
   headers: {
     'Content-Type': 'application/json',
