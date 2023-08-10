@@ -1,10 +1,10 @@
 import React from 'react';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
-function Card({ card, onCardClick, onCardLike, onCardDelete }) {
+function Card({ card, onCardClick, onCardLike, onCardDelete, isLikedCard }) {
   const currentUser = React.useContext(CurrentUserContext);
-  const isOwner = card.owner._id !== currentUser._id;
-  const isLiked = card.likes.some((like) => like._id === currentUser._id);
+  const isOwner = card.owner._id === currentUser._id;
+  const isLiked = isLikedCard(card);
 
   function handleClick() {
     onCardClick(card);
@@ -21,15 +21,15 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   return (
     <article className="card__container">
       {isOwner ? (
-        ''
-      ) : (
         <button
           className="card__trash-bin"
           type="button"
           aria-label="Удалить фото"
           onClick={handleClickDelete}
         ></button>
-      )}
+      ) : (
+        ''
+      ) }
       <img
         className="card__img"
         src={card.link}

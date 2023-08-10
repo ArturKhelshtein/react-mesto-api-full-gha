@@ -61,8 +61,8 @@ function putLike(req, res, next) {
     { $addToSet: { likes: userId } },
     { new: true },
   )
-    .populate(['owner', 'likes'])
     .orFail(new ErrorNotFound('Карточка с таким id не найден'))
+    .populate(['owner', 'likes'])
     .then((likes) => res.send({ message: 'Лайк добавлен ♡', data: likes }))
     .catch((error) => {
       if (error.name === 'CastError') {
@@ -79,8 +79,8 @@ function deleteLike(req, res, next) {
     { $pull: { likes: userId } },
     { new: true },
   )
-    .populate(['owner', 'likes'])
     .orFail(new ErrorNotFound('Карточка с таким id не найдена'))
+    .populate(['owner', 'likes'])
     .then((likes) => res.send({ message: 'Лайк удален ಠ_ಠ', data: likes }))
     .catch((error) => {
       if (error.name === 'CastError') {

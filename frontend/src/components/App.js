@@ -44,7 +44,7 @@ function App() {
         .then((result) => {
           const [currentUser, card] = result;
           setCurrentUser(currentUser.data);
-          setCards(card.data);
+          setCards(card.data.reverse());
         })
         .catch((error) =>
           console.error(
@@ -73,10 +73,13 @@ function App() {
   function handleCardClick(card) {
     setSelectedCard(card);
   }
+  function isLikedCard(card) {
+    return card.likes.some((like) => like._id === currentUser._id)
+  }
+
   function handleCardLike(card) {
-    const isLiked = card.likes.some((like) => like._id === currentUser._id);
     api
-      .changeLikeCardStatus(card._id, isLiked)
+      .changeLikeCardStatus({ id:card._id, isLiked:isLikedCard(card) })
       .then((newCard) =>
         setCards((state) =>
           state.map((everyCard) =>
@@ -224,6 +227,7 @@ function App() {
                     onCardLike={handleCardLike}
                     onCardDelete={handleCardDelete}
                     cards={cards}
+                    isLikedCard={isLikedCard}
                   />
                 }
               />

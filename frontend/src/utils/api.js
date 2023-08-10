@@ -92,7 +92,7 @@ class Api {
     });
   }
 
-  changeLikeCardStatus(id, isLiked) {
+  changeLikeCardStatus({ id, isLiked }) {
     return isLiked ? this.removeLike(id) : this.setLike(id);
   }
 }

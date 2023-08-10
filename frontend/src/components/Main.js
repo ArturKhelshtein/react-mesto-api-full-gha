@@ -10,6 +10,7 @@ function Main({
   onCardLike,
   onCardDelete,
   cards,
+  isLikedCard,
 }) {
   const currentUser = React.useContext(CurrentUserContext);
 
@@ -50,6 +51,7 @@ function Main({
             onCardClick={onCardClick}
             onCardLike={onCardLike}
             onCardDelete={onCardDelete}
+            isLikedCard={isLikedCard}
           />
         ))}
       </section>
