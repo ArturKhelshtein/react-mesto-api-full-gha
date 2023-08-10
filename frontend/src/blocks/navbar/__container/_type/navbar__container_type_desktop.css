@@ -1,9 +1,9 @@
 .navbar__container_type_desktop {
-	display: none;
+  display: none;
 }
 
 @media (min-width: 600px) {
-	.navbar__container_type_desktop {
-		display: flex;
-	}
+  .navbar__container_type_desktop {
+    display: flex;
+  }
 }

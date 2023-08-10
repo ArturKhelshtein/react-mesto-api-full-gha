@@ -1,14 +1,14 @@
 .sign__heading {
-	margin: 0;
-	padding-bottom: 40px;
-	text-align: center;
-	font-size: 20px;
-	font-weight: 900;
+  margin: 0;
+  padding-bottom: 40px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 900;
 }
 
 @media (min-width: 600px) {
-	.sign__heading {
-		padding-bottom: 50px;
-		font-size: 24px;
-	}
+  .sign__heading {
+    padding-bottom: 50px;
+    font-size: 24px;
+  }
 }

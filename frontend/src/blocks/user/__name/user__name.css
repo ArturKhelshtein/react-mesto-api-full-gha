@@ -1,21 +1,21 @@
 .user__name {
-	margin: 0;
-	margin-top: 26px;
-	padding-left: 28px;
-	max-width: 100%;
-	overflow: hidden;
-	white-space: nowrap;
-	font-weight: 500;
-	font-size: 27px;
-	line-height: 33px;
-	text-overflow: ellipsis;
+  margin: 0;
+  margin-top: 26px;
+  padding-left: 28px;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  font-weight: 500;
+  font-size: 27px;
+  line-height: 33px;
+  text-overflow: ellipsis;
 }
 
 @media (min-width: 700px) {
-	.user__name {
-		margin: 0;
-		padding-left: 0;
-		font-size: 42px;
-		line-height: 48px;
-	}
+  .user__name {
+    margin: 0;
+    padding-left: 0;
+    font-size: 42px;
+    line-height: 48px;
+  }
 }

@@ -1,9 +1,9 @@
 .navbar__container_type_mobile-unwrapped {
-	display: flex;
+  display: flex;
 }
 
 @media (min-width: 600px) {
-	.navbar__container_type_mobile-unwrapped {
-		display: none;
-	}
+  .navbar__container_type_mobile-unwrapped {
+    display: none;
+  }
 }

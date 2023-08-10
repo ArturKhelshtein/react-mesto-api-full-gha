@@ -1,18 +1,22 @@
 .navbar__container_type_mobile {
-	padding: 40px;
-	height: 160px;
-	box-sizing: border-box;
-	display: none;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	gap: 18px;
-	border-bottom: 1px solid rgba(84, 84, 84, 0.7);
-	transform: scaleY(0);
-	animation: unwrapped .1s forwards;
+  padding: 40px;
+  height: 160px;
+  box-sizing: border-box;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+  transform: scaleY(0);
+  animation: unwrapped 0.1s forwards;
 }
 
 @keyframes unwrapped {
-	0% {transform: scaleY(0);}
-	100% {transform: scaleY(1);}
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
 }

@@ -1,12 +1,12 @@
 .footer {
-	display: block;
-	padding-left: 19px;
-	margin-bottom: 36px;
+  display: block;
+  padding-left: 19px;
+  margin-bottom: 36px;
 }
 
 @media (min-width: 1000px) {
-	.footer {
-		padding-left: 200px;
-		margin-bottom: 60px;
-	}
+  .footer {
+    padding-left: 200px;
+    margin-bottom: 60px;
+  }
 }

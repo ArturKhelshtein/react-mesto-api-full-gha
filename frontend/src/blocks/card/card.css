@@ -1,22 +1,22 @@
 .card {
-	margin: 0 19px 48px 19px;
-	box-sizing: border-box;
-	display: grid;
-	grid-template-columns: 1fr;
-	row-gap: 20px;
+  margin: 0 19px 48px 19px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 20px;
 }
 
 @media (min-width: 600px) {
-	.card {
-		grid-template-columns: 1fr 1fr;
-		justify-content: space-between;
-		column-gap: 17px;
-	}
+  .card {
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+    column-gap: 17px;
+  }
 }
 
 @media (min-width: 1000px) {
-	.card {
-		margin: 0 200px 67px 200px;
-		grid-template-columns: 1fr 1fr 1fr;
-	}
+  .card {
+    margin: 0 200px 67px 200px;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }

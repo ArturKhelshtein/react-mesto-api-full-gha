@@ -1,18 +1,18 @@
 .header__logo-container {
-	width: 104px;
-	display: block;
-	margin-bottom: 27px;
-	opacity: 1;
+  width: 104px;
+  display: block;
+  margin-bottom: 27px;
+  opacity: 1;
 }
 
 @media (min-width: 700px) {
-	.header__logo-container {
-		width: 142px;
-		margin-bottom: 36px;
-	}
+  .header__logo-container {
+    width: 142px;
+    margin-bottom: 36px;
+  }
 }
 
 .header__logo-container:hover {
-	opacity: 0.6;
-	cursor: pointer;
+  opacity: 0.6;
+  cursor: pointer;
 }

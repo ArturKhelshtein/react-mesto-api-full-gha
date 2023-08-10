@@ -1,19 +1,19 @@
 .user__about {
-	margin: 0;
-	max-width: 100%;
-	overflow: hidden;
-	white-space: nowrap;
-	font-weight: 400;
-	font-size: 14px;
-	line-height: 17px;
-	text-overflow: ellipsis;
+  margin: 0;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-overflow: ellipsis;
 }
 
 @media (min-width: 700px) {
-	.user__about {
-		padding-top: 5px;
-		grid-area: about;
-		font-size: 18px;
-		line-height: 22px;
-	}
+  .user__about {
+    padding-top: 5px;
+    grid-area: about;
+    font-size: 18px;
+    line-height: 22px;
+  }
 }

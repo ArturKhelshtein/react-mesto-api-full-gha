@@ -1,17 +1,17 @@
 .popup__heading {
-	content: "prefix";
-	margin: 0;
-	margin-bottom: 74px;
-	color: #000;
-	font-weight: 900;
-	font-size: 18px;
-	line-height: 22px;
+  content: "prefix";
+  margin: 0;
+  margin-bottom: 74px;
+  color: #000;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 22px;
 }
 
 @media (min-width: 600px) {
-	.popup__heading {
-		margin-bottom: 47px;
-		font-size: 24px;
-		line-height: 29px;
-	}
+  .popup__heading {
+    margin-bottom: 47px;
+    font-size: 24px;
+    line-height: 29px;
+  }
 }

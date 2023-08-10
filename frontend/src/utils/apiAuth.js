@@ -1,64 +1,64 @@
 class ApiAuth {
-	constructor({ baseUrl, headers }) {
-		this._baseUrl = baseUrl;
-		this._headers = headers;
-	}
+  constructor({ baseUrl, headers }) {
+    this._baseUrl = baseUrl;
+    this._headers = headers;
+  }
 
-	_checkResponse(result) {
-		return result.ok
-			? result.json()
-			: Promise.reject(`Ошибка: ${result.status}`);
-	}
+  _checkResponse(result) {
+    return result.ok
+      ? result.json()
+      : Promise.reject(`Ошибка: ${result.status}`);
+  }
 
-	_request(endpoint, options) {
-		return fetch(`${this._baseUrl}${endpoint}`, options).then(
-			this._checkResponse
-		);
-	}
+  _request(endpoint, options) {
+    return fetch(`${this._baseUrl}${endpoint}`, options).then(
+      this._checkResponse
+    );
+  }
 
-	register({ email, password }) {
-		return this._request(`/signup`, {
-			method: 'POST',
-			credentials: 'include',
-			headers: this._headers,
-			body: JSON.stringify({
-				password,
-				email,
-			}),
-		});
-	}
+  register({ email, password }) {
+    return this._request(`/signup`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: this._headers,
+      body: JSON.stringify({
+        password,
+        email,
+      }),
+    });
+  }
 
-	 authorize({ email, password }) {
-		return this._request(`/signin`, {
-			method: 'POST',
-			credentials: 'include',
-			headers: this._headers,
-			body: JSON.stringify({
-				password,
-				email,
-			}),
-		});
-	}
+  authorize({ email, password }) {
+    return this._request(`/signin`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: this._headers,
+      body: JSON.stringify({
+        password,
+        email,
+      }),
+    });
+  }
 
-	// getContent(token) {
-	getContent() {
-		return this._request(`/users/me`, {
-			headers: {
-				Accept: 'application/json',
-				'Content-Type': 'application/json',
-				// Authorization: `Bearer ${token}`,
-			},
-			credentials: 'include',
-		});
-	}
+  // getContent(token) {
+  getContent() {
+    return this._request(`/users/me`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        // Authorization: `Bearer ${token}`,
+      },
+      credentials: 'include',
+    });
+  }
 }
 
 const apiAuth = new ApiAuth({
-	// baseUrl: 'https://auth.nomoreparties.co',
-	baseUrl: 'http://localhost:4000',
-	headers: {
-		'Content-Type': 'application/json',
-	}, 
+  // baseUrl: 'https://auth.nomoreparties.co',
+  baseUrl: 'http://localhost:4000',
+  headers: {
+    'Content-Type': 'application/json',
+  },
 });
 
 export default apiAuth;

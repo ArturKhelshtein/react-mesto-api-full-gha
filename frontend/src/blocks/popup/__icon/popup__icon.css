@@ -1,11 +1,11 @@
 .popup__icon {
-	margin-bottom: 40px;
-	max-width: 120px;
-	max-height: 120px;
+  margin-bottom: 40px;
+  max-width: 120px;
+  max-height: 120px;
 }
 
 @media (min-width: 600px) {
-	.popup__icon {
-		margin-bottom: 32px;
-	}
+  .popup__icon {
+    margin-bottom: 32px;
+  }
 }
