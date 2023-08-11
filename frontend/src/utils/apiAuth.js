@@ -45,7 +45,7 @@ class ApiAuth {
       method: 'GET',
       credentials: 'include',
       headers: this._headers,
-    })
+    });
   }
 
   getContent() {
@@ -60,7 +60,7 @@ class ApiAuth {
 }
 
 const apiAuth = new ApiAuth({
-  baseUrl: 'http://localhost:4000',
+  baseUrl: 'http://localhost:3000',
   headers: {
     'Content-Type': 'application/json',
   },

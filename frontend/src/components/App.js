@@ -41,9 +41,9 @@ function App() {
       api
         .getAppInfo()
         .then((result) => {
-          const [currentUser, card] = result;
+          const [currentUser, cardList] = result;
           setCurrentUser(currentUser.data);
-          setCards(card.data.reverse());
+          setCards(cardList.data.reverse());
         })
         .catch((error) =>
           console.error(
@@ -147,8 +147,7 @@ function App() {
   function handleLoginSubmit({ email, password }) {
     apiAuth
       .authorize({ email, password })
-      .then((data) => {
-        apiAuth.getContent(data.user).then((data) => setCurrentUser(data));
+      .then(() => {
         navigate('/', { replace: true });
         setLoggedIn(true);
       })
