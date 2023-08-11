@@ -7,6 +7,12 @@ const signUpRouter = require('./signup');
 const signOutRouter = require('./signout');
 const { auth } = require('../middlewares/auth');
 
+router.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 router.use('/signup', signUpRouter);
 router.use('/signin', signInRouter);
 

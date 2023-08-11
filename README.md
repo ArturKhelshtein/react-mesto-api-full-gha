@@ -7,7 +7,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 51.250.1.126
+IP-адрес 158.160.35.117
 
 Frontend https://arturkhelshtein.nomoreparties.co
 
