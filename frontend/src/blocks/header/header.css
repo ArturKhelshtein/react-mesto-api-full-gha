@@ -10,6 +10,12 @@
   border-bottom: 1px solid rgba(84, 84, 84, 0.7);
 }
 
+@media (min-width: 600px) {
+  .header {
+    margin: 0 auto 19px auto;
+  }
+}
+
 @media (min-width: 1000px) {
   .header {
     margin: 0 200px 40px 200px;
