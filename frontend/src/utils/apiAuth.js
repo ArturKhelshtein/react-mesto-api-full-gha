@@ -59,7 +59,7 @@ class ApiAuth {
 }
 
 const apiAuth = new ApiAuth({
-  baseUrl: 'http://localhost:3000',
+  baseUrl: 'https://api.arturkhelshtein.nomoreparties.co',
   headers: {
     'Content-Type': 'application/json',
   },
