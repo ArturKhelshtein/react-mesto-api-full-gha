@@ -19,7 +19,6 @@ class ApiAuth {
   register({ email, password }) {
     return this._request(`/signup`, {
       method: 'POST',
-      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({
         password,
