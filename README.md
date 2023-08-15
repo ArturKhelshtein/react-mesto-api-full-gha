@@ -7,7 +7,7 @@
 
 ## Ссылки на проект
 
-IP 158.160.35.117
+IP 158.160.104.102
 
 Frontend https://arturkhelshtein.nomoreparties.co
 
